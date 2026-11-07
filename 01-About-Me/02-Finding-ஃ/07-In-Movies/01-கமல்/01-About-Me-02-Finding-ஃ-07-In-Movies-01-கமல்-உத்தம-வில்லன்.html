@@ -1,0 +1,236 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><link rel="preload" href="../../../../assets/fonts/MuktaMalar-ExtraLight.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../../assets/fonts/MuktaMalar-Light.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../../assets/fonts/MuktaMalar-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../../assets/fonts/MuktaMalar-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../../assets/fonts/MuktaMalar-SemiBold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../../assets/fonts/MuktaMalar-Bold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../../assets/fonts/MuktaMalar-ExtraBold.woff2" as="font" type="font/woff2" crossorigin><title>உத்தம வில்லன்</title><style>html:not(.fonts-ready) body{visibility:hidden!important}html.fonts-ready body{visibility:visible}</style><style>@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:200;font-display:swap;src:url("../../../../assets/fonts/MuktaMalar-ExtraLight.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:300;font-display:swap;src:url("../../../../assets/fonts/MuktaMalar-Light.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:400;font-display:swap;src:url("../../../../assets/fonts/MuktaMalar-Regular.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:500;font-display:swap;src:url("../../../../assets/fonts/MuktaMalar-Medium.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:600;font-display:swap;src:url("../../../../assets/fonts/MuktaMalar-SemiBold.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:700;font-display:swap;src:url("../../../../assets/fonts/MuktaMalar-Bold.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:800;font-display:swap;src:url("../../../../assets/fonts/MuktaMalar-ExtraBold.woff2") format('woff2')}
+
+
+    :root {
+      color-scheme: light;
+      --bg: var(--theme-background);
+      --panel: var(--theme-panel);
+      --text: var(--theme-text);
+      --muted: var(--theme-muted);
+      --accent: var(--theme-accent);
+      --accent-soft: var(--theme-accent-soft);
+      --link: var(--theme-link);
+      --line: var(--theme-line);
+      --hover: var(--theme-hover);
+      --read-size: 1.2rem;
+      --serif: "Mukta Malar", Georgia, "Noto Serif Tamil", "Nirmala UI", "Latha", "Tamil Sangam MN", serif;
+      --sans: "Mukta Malar", system-ui, -apple-system, "Segoe UI", "Noto Sans Tamil", "Nirmala UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      line-height: 1.8;
+      color: var(--text);
+      background: var(--bg);
+    }
+    a { color: var(--link); text-underline-offset: 3px; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* top bar */
+    .topbar {
+      position: sticky; top: 0; z-index: 5;
+      display: flex; align-items: center; gap: .5rem;
+      padding: .55rem 1rem;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-title { font-size: .88rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+    .spacer { flex: 1; }
+    .icon-btn {
+      flex: none; min-width: 2.4rem; height: 2.4rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--line); border-radius: 9px; padding: 0 .6rem;
+      background: var(--panel); color: var(--text);
+      font: inherit; font-size: .9rem; text-decoration: none; cursor: pointer;
+    }
+    .icon-btn:hover { background: var(--hover); }
+    .icon-btn svg { width: 1.15rem; height: 1.15rem; display: block; }
+
+    /* page */
+    /* Homepage top spacing is intentionally not shared with reading pages. */
+    main { max-width: 720px; margin: 0 auto; padding: 0 22px 72px; }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(1.7rem, 6vw, 2.6rem);
+      line-height: 1.5;
+      color: var(--accent);
+      text-wrap: balance;
+    }
+    h2 {
+      margin: clamp(40px, 8vw, 64px) 0 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+      line-height: 1.5;
+      color: var(--accent);
+    }
+
+    .verse {
+      margin: 18px 0 24px;
+      font-family: var(--serif);
+      font-size: var(--read-size);
+      line-height: 2.05;
+      overflow-wrap: anywhere;
+    }
+
+    /* callouts */
+    .callout {
+      margin: 24px 0 0;
+      padding: 14px 18px 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+    }
+    .callout-title {
+      margin: 0 0 4px;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+    .callout p:not(.callout-title) { margin: 0; color: var(--text); }
+
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+    /* ---- general markdown content ---- */
+    .para { margin: 0 0 1.1rem; overflow-wrap: anywhere; }
+    h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-height: 1.5; color: var(--accent); margin: 30px 0 0; }
+    h3 { font-size: 1.2rem; } h4 { font-size: 1.1rem; } h5, h6 { font-size: 1rem; }
+    h1 + .para, h2 + .para, h3 + .para { margin-top: 14px; }
+    ul, ol { margin: 0 0 1.1rem; padding-left: 1.5rem; }
+    li { margin: .3rem 0; } li > ul, li > ol { margin: .3rem 0 0; }
+    blockquote { margin: 22px 0; padding: 2px 0 2px 16px; border-left: 3px solid var(--line); color: var(--muted); }
+    blockquote > :last-child { margin-bottom: 0; }
+    code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; background: var(--panel); padding: .1em .35em; border-radius: 5px; }
+    pre { margin: 0 0 1.2rem; padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; line-height: 1.6; }
+    pre code { background: none; padding: 0; }
+    table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 0 0 1.2rem; }
+    th, td { border: 1px solid var(--line); padding: .45rem .8rem; text-align: left; }
+    th { background: var(--panel); font-weight: 600; }
+    img { max-width: 100%; height: auto; border-radius: 8px; }
+    mark { background: var(--accent-soft); color: inherit; padding: 0 .15em; border-radius: 3px; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+    .callout > * + * { margin-top: 8px; }
+    .callout .para { margin: 0; }
+    .callout .verse { margin: 6px 0; }
+    .callout ul, .callout ol { margin: 0; }
+
+.ln{margin-left:.7em;font-family:var(--sans,var(--ui));font-size:.7em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;-webkit-user-select:none;user-select:none}
+
+:root {--theme-background:#faf9f6;--theme-panel:#f3efe7;--theme-text:#2b2a27;--theme-muted:#6b6257;--theme-accent:#654735;--theme-link:#7a5430;--theme-line:#e2d8c8;--theme-accent-soft:#efe5db;--theme-hover:#f0ede6;--theme-anth-background:#f5f3ee;--theme-anth-panel:#fffefa;--theme-anth-text:#242620;--theme-anth-muted:#66675e;--theme-anth-line:#dedbd2;--theme-anth-accent:#6b4935;--theme-anth-accent-soft:#efe5db;--theme-anth-hover:#f0ede6;--theme-anth-on-accent:#fff;--theme-anth-shadow:0 6px 24px rgba(32,26,20,.07);--theme-typography-background:#f7f7f7;--theme-typography-panel:#f7f7f7;--theme-typography-line:#c9c9c9;--masthead-height:3.5rem;}
+.site-masthead{position:relative;display:flex;align-items:center;justify-content:center;min-height:var(--masthead-height);margin:0 0 22px;padding:0;border-bottom:1px solid var(--line)}
+.site-masthead a{position:static;display:inline-flex;align-items:center;justify-content:center;max-width:calc(100% - 3rem);gap:.6rem;color:var(--accent);font-family:var(--serif);font-size:clamp(1rem,5.2vw,2.6rem);font-weight:600;line-height:1.5;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-masthead a:hover{color:var(--link)}
+.site-masthead-icon{position:absolute;left:2px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.site-masthead-icon svg{display:block;width:1.5rem;height:1.5rem}
+.hero{margin:0 auto 18px;text-align:center;padding:clamp(18px,5vw,34px) 0 8px}
+.hero h1{margin:0;font-family:var(--serif);font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.4;color:var(--accent)}
+.ornament{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px auto 8px;color:var(--line)}
+.ornament:before,.ornament:after{content:"";display:block;width:42px;border-top:1px solid var(--line)}
+.ornament span{display:block;width:7px;height:7px;border:1px solid var(--accent);transform:rotate(45deg)}
+.tagline{margin:6px 0 0;color:var(--muted);font-size:.95rem}
+.note-subtitle{margin:8px 0 16px;text-align:center;color:var(--muted);font-size:1rem;font-family:var(--serif)}
+.note-reading-controls{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:clamp(28px,6vw,44px) 0 20px}
+.note-parent-navigation{min-width:0;margin:0;font-size:.9rem}
+.note-parent-navigation a{color:var(--link);text-decoration:none}
+.note-parent-navigation a:hover{text-decoration:underline}
+.reading-size-controls{display:flex;align-items:center;gap:.4rem;flex:none;margin-left:auto}
+.icon-btn{min-width:2.4rem;height:2.4rem;border:1px solid var(--line);border-radius:9px;padding:0 .6rem;background:var(--panel);color:var(--text);font:inherit;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.note-main{max-width:860px;margin:auto;padding:0 clamp(16px,4vw,48px) 80px;font-size:var(--read-size,1.2rem);line-height:1.9}
+.note-title{margin:12px 0 20px;font-size:var(--type-note-title,1.73rem);color:var(--accent)}
+.note-body h1,.note-body h2,.note-body h3,.note-body h4{color:var(--accent);line-height:1.5}
+.note-body h2{margin:38px 0 8px;padding-top:20px;border-top:1px solid var(--line);font-size:1.45rem}
+.note-body h3,.note-body h4{margin:28px 0 6px}
+.note-body p{margin:0 0 1.1rem}
+.note-body .para,.note-body .verse{font-size:var(--read-size,var(--type-reading,1.2rem))}
+.note-body .verse{line-height:2.05;margin:18px 0 24px}
+.note-body .callout{margin:24px 0 0;padding:14px 18px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px}
+.note-body img{max-width:100%;height:auto}
+.note-body blockquote{margin:22px 0;padding:2px 0 2px 16px;border-left:3px solid var(--line);color:var(--muted)}
+.note-body pre{overflow:auto;padding:14px;background:var(--panel)}
+.note-body code{font-family:monospace;background:var(--panel);padding:.1em .3em}
+.note-body table{display:block;overflow-x:auto;border-collapse:collapse}
+.note-body th,.note-body td{padding:7px 10px;border:1px solid var(--line)}
+.fig{margin:1.4rem 0;text-align:center}
+.fig img{display:block;margin:0 auto;max-width:100%;height:auto}
+figure.fig figcaption{margin-top:.5rem;font-size:.85rem;color:var(--muted)}
+.missing-img{color:var(--muted);font-style:italic;font-size:.9rem}
+.note-body .fig{margin:2rem 0;text-align:center}
+.note-body .fig img{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* ================= Approved Mukta Malar typography system ================= */
+:root{
+ --bg:var(--theme-typography-background);--panel:var(--theme-typography-panel);--line:var(--theme-typography-line);
+ --font-main:"Mukta Malar","Noto Sans Tamil","Nirmala UI","Latha","Tamil Sangam MN",system-ui,-apple-system,"Segoe UI",sans-serif;
+ --serif:var(--font-main);--sans:var(--font-main);--reading:var(--font-main);--ui:var(--font-main);
+ --weight-display:700;
+ --weight-page-title:600;
+ --weight-note-title:600;
+ --weight-section-heading:600;
+ --weight-item-title:500;
+ --weight-subtitle:400;
+ --weight-tagline:400;
+ --weight-body:400;
+ --weight-reading:400;
+ --weight-supporting:500;
+ --line-display:1.35;
+ --line-page-title:1.4;
+ --line-note-title:1.45;
+ --line-section-heading:1.5;
+ --line-item-title:1.5;
+ --line-subtitle:1.7;
+ --line-tagline:1.7;
+ --line-body:1.8;
+ --line-reading:1.9;
+ --line-supporting:1.5;
+ --type-display:clamp(2rem,7vw,2.49rem);
+ --type-page-title:2.07rem;
+ --type-note-title:1.73rem;
+ --type-section-heading:1.44rem;
+ --type-item-title:1.2rem;
+ --type-subtitle:1rem;
+ --type-tagline:1rem;
+ --type-body:1rem;
+ --type-reading:1.2rem;
+ --type-supporting:.83rem;
+}
+/* Welcome and Thanks */
+.display{font-family:var(--serif);font-size:var(--type-display);font-weight:var(--weight-display);line-height:var(--line-display);color:var(--accent)}
+.hello,.intro,.thanks>p,.thanks details p{font-size:var(--type-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+.contact,.thanks summary,.thanks details h3{font-size:var(--type-supporting);font-weight:var(--weight-supporting);line-height:var(--line-supporting)}
+/* Page titles, section headings and note titles */
+.page-title,.brand h2,.welcome h1.page-title{font-family:var(--serif);font-size:var(--type-page-title);font-weight:var(--weight-page-title);line-height:var(--line-page-title);color:var(--accent)}
+.note-title,main h1.note-title,.poem-heading h1.note-title{font-family:var(--serif);font-size:var(--type-note-title);font-weight:var(--weight-note-title);line-height:var(--line-note-title);color:var(--accent)}
+.section-heading,.poem h3,.thanks h2,.library h2{font-family:var(--serif);font-size:var(--type-section-heading);font-weight:var(--weight-section-heading);line-height:var(--line-section-heading);color:var(--accent)}
+/* Taglines, subtitles and body copy */
+.section-subtitle,.note-subtitle,.work-sub{font-weight:var(--weight-subtitle)}
+.tagline,.section-tagline{font-weight:var(--weight-tagline)}
+.tagline,.section-subtitle,.section-tagline,.note-subtitle,.work-sub{font-family:var(--sans);font-size:var(--type-subtitle);line-height:var(--line-subtitle);color:var(--muted);font-style:normal}
+ .tagline,.section-tagline{font-size:var(--type-tagline);line-height:var(--line-tagline)}
+.tagline{white-space:normal}
+.section-intro,.library>p{font-size:var(--type-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+/* Homepage and section item lists */
+.work-name,.poem-link-copy .work-name{font-family:var(--serif);font-size:var(--type-item-title);font-weight:var(--weight-item-title);line-height:var(--line-item-title);color:var(--text)}
+.work-sub{display:block}
+/* Single-page and anthology reading */
+.prose,.prose.note,.para,.verse{font-family:var(--reading,var(--serif));font-size:var(--type-reading);font-weight:var(--weight-reading);line-height:var(--line-reading)}
+.poem-heading h1{font-family:var(--reading,var(--serif));font-size:var(--type-note-title);font-weight:var(--weight-note-title);line-height:var(--line-note-title)}
+.eyebrow,.kicker,.poem-number,.count,.section-identity-back{font-size:var(--type-supporting);font-weight:var(--weight-supporting);line-height:var(--line-supporting)}
+
+:root{--theme-background:#faf9f6;--theme-panel:#f3efe7;--theme-text:#2b2a27;--theme-muted:#6b6257;--theme-accent:#654735;--theme-link:#7a5430;--theme-line:#e2d8c8;--theme-accent-soft:#efe5db;--theme-hover:#f0ede6;--theme-anth-background:#f5f3ee;--theme-anth-panel:#fffefa;--theme-anth-text:#242620;--theme-anth-muted:#66675e;--theme-anth-line:#dedbd2;--theme-anth-accent:#6b4935;--theme-anth-accent-soft:#efe5db;--theme-anth-hover:#f0ede6;--theme-anth-on-accent:#fff;--theme-typography-background:#f7f7f7;--theme-typography-panel:#f7f7f7;--theme-typography-line:#c9c9c9;--type-display:clamp(2rem, 7vw, 2.49rem);--weight-display:700;--line-display:1.35;--type-page-title:2.07rem;--weight-page-title:600;--line-page-title:1.4;--type-note-title:1.73rem;--weight-note-title:600;--line-note-title:1.45;--type-section-heading:1.44rem;--weight-section-heading:600;--line-section-heading:1.5;--type-item-title:1.2rem;--weight-item-title:500;--line-item-title:1.5;--type-subtitle:1rem;--weight-subtitle:400;--line-subtitle:1.7;--type-tagline:1rem;--weight-tagline:400;--line-tagline:1.7;--type-body:1rem;--weight-body:400;--line-body:1.8;--type-reading:1.2rem;--weight-reading:400;--line-reading:1.9;--type-supporting:.83rem;--weight-supporting:500;--line-supporting:normal}body{max-width:none;margin:0;padding:0}.note-main{max-width:720px;margin-left:auto;margin-right:auto;padding:0 22px 56px}</style><script>(function(){var root=document.documentElement;if(!document.fonts||typeof document.fonts.load!=='function'){console.error('Mukta Malar font loading is unavailable; page remains hidden.');return;}var weights=[200,300,400,500,600,700,800];Promise.all(weights.map(function(weight){return document.fonts.load(weight+' 16px "Mukta Malar"','தமிழ்').then(function(faces){if(!faces.length||faces.some(function(face){return face.status!=='loaded';})){throw new Error('Mukta Malar weight '+weight+' did not load.');}});})).then(function(){return document.fonts.ready;}).then(function(){root.classList.add('fonts-ready');}).catch(function(error){console.error('Mukta Malar font loading failed; page remains hidden.',error);});})();</script></head><body><main class="note-main"><header class="site-masthead"><a href="../../../../index.html" aria-label="Home" title="Home"><span class="site-masthead-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7"/><path d="M5 9v12M19 9v12"/></svg></span><span lang="ta">எங்கெழுந் தருளுவ தினியே</span></a></header><header class="hero"><h1 class="page-title" lang="ta">கமல்</h1><div class="ornament" aria-hidden="true"><span></span></div></header><div class="note-reading-controls"><nav class="note-parent-navigation" aria-label="Parent navigation"><a href="./01-About-Me-02-Finding-%E0%AE%83-07-In-Movies-01-%E0%AE%95%E0%AE%AE%E0%AE%B2%E0%AF%8D.html">← கமல்</a></nav><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn" id="size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn" id="size-up" aria-label="Increase text size">அ+</button></div></div><h1 class="note-title" lang="ta">உத்தம வில்லன்</h1><article class="note-body"></article></main><script>(function(){var r=document.documentElement,s=1.2;try{s=parseFloat(localStorage.getItem('tv-size'))||s}catch(e){}function set(v){s=Math.max(.95,Math.min(1.8,Math.round(v*100)/100));r.style.setProperty('--read-size',s+'rem');try{localStorage.setItem('tv-size',s)}catch(e){}}document.getElementById('size-down')?.addEventListener('click',function(){set(s-.1)});document.getElementById('size-up')?.addEventListener('click',function(){set(s+.1)});set(s)})();</script></body></html>

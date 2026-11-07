@@ -1,0 +1,244 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><link rel="preload" href="../../../assets/fonts/MuktaMalar-ExtraLight.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Light.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-SemiBold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Bold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-ExtraBold.woff2" as="font" type="font/woff2" crossorigin><title>In Watches</title><style>html:not(.fonts-ready) body{visibility:hidden!important}html.fonts-ready body{visibility:visible}</style><style>@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:200;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-ExtraLight.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:300;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Light.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:400;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Regular.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:500;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Medium.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:600;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-SemiBold.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:700;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Bold.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:800;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-ExtraBold.woff2") format('woff2')}
+
+
+    :root {
+      color-scheme: light;
+      --bg: var(--theme-background);
+      --panel: var(--theme-panel);
+      --text: var(--theme-text);
+      --muted: var(--theme-muted);
+      --accent: var(--theme-accent);
+      --link: var(--theme-link);
+      --line: var(--theme-line);
+      --serif: "Mukta Malar", Georgia, "Noto Serif Tamil", "Nirmala UI", "Latha", "Tamil Sangam MN", serif;
+      --sans: "Mukta Malar", system-ui, -apple-system, "Segoe UI", "Noto Sans Tamil", "Nirmala UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 22px 56px;
+      font-family: var(--sans);
+      line-height: 1.8;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a { color: var(--link); text-underline-offset: 3px; }
+    a:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ---------- Welcome ---------- */
+    .hero { text-align: center; }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(1rem, 5.2vw, 2.6rem);
+      line-height: 1.5;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 160px;
+      margin: 22px auto 24px;
+      color: var(--line);
+    }
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      flex: 1;
+      border-top: 1px solid currentColor;
+    }
+    .ornament span {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      transform: rotate(45deg);
+    }
+
+    .tagline {
+      margin: 0 auto 28px;
+      max-width: 30rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 3.2vw, 1.25rem);
+      color: var(--muted);
+      text-wrap: balance;
+    }
+
+    .hello {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--text);
+    }
+    .hello strong { color: var(--accent); font-weight: 600; }
+
+    .intro {
+      margin: 6px auto 0;
+      max-width: 30rem;
+      color: var(--muted);
+      text-wrap: balance;
+    }
+
+    .contact {
+      margin: 22px 0 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* ---------- Library ---------- */
+    .library { margin-top: clamp(44px, 9vw, 72px); }
+
+    h2 {
+      margin: 0 0 6px;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .library ul { list-style: none; margin: 0; padding: 0; }
+    .library li { border-bottom: 1px solid var(--line); }
+    .library li:first-child { border-top: 1px solid var(--line); }
+
+    .library a {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 4px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .library a:hover { color: var(--accent); }
+    .library a:hover .arrow { transform: translateX(4px); }
+
+    .work-name { font-family: var(--serif); font-size: 1.2rem; }
+    .work-sub { display: block; font-size: 0.85rem; color: var(--muted); }
+    .arrow { flex: none; color: var(--muted); transition: transform 0.15s ease; }
+
+    /* ---------- Thanks ---------- */
+    .thanks {
+      margin-top: clamp(44px, 9vw, 72px);
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .thanks p { margin: 8px 0 0; }
+
+    .thanks details { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .thanks summary {
+      cursor: pointer;
+      font-size: 0.92rem;
+      color: var(--link);
+    }
+    .thanks details[open] summary { margin-bottom: 8px; }
+    .thanks details p,
+    .thanks details h3 {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .thanks details h3 { margin: 0; font-size: 0.95rem; font-weight: 600; }
+    .thanks details hr { border: 0; border-top: 1px solid var(--line); margin: 16px 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .arrow { transition: none; }
+    }
+.crumbs{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:0 0 22px;font-size:.95rem}
+.crumbs a{display:inline-flex;align-items:center;gap:.4rem}
+.crumbs .ico svg{width:1em;height:1em;display:block}
+.library p{margin:8px 0 14px}
+
+:root {--theme-background:#faf9f6;--theme-panel:#f3efe7;--theme-text:#2b2a27;--theme-muted:#6b6257;--theme-accent:#654735;--theme-link:#7a5430;--theme-line:#e2d8c8;--theme-accent-soft:#efe5db;--theme-hover:#f0ede6;--theme-anth-background:#f5f3ee;--theme-anth-panel:#fffefa;--theme-anth-text:#242620;--theme-anth-muted:#66675e;--theme-anth-line:#dedbd2;--theme-anth-accent:#6b4935;--theme-anth-accent-soft:#efe5db;--theme-anth-hover:#f0ede6;--theme-anth-on-accent:#fff;--theme-anth-shadow:0 6px 24px rgba(32,26,20,.07);--theme-typography-background:#f7f7f7;--theme-typography-panel:#f7f7f7;--theme-typography-line:#c9c9c9;--masthead-height:3.5rem;}
+.site-masthead{position:relative;display:flex;align-items:center;justify-content:center;min-height:var(--masthead-height);margin:0 0 22px;padding:0;border-bottom:1px solid var(--line)}
+.site-masthead a{position:static;display:inline-flex;align-items:center;justify-content:center;max-width:calc(100% - 3rem);gap:.6rem;color:var(--accent);font-family:var(--serif);font-size:clamp(1rem,5.2vw,2.6rem);font-weight:600;line-height:1.5;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-masthead a:hover{color:var(--link)}
+.site-masthead-icon{position:absolute;left:2px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.site-masthead-icon svg{display:block;width:1.5rem;height:1.5rem}
+.section-subtitle{margin:0 auto 4px;color:var(--text);font-size:1.05rem;font-family:var(--serif)}
+.section-toolbar{margin:clamp(44px,9vw,72px) 0 0;padding:0}
+.section-toolbar .spacer{flex:1}
+.section-toolbar a{color:var(--link);text-decoration:none}
+.section-toolbar a:hover{text-decoration:underline}
+.library{margin-top:0}
+
+/* ================= Approved Mukta Malar typography system ================= */
+:root{
+ --bg:var(--theme-typography-background);--panel:var(--theme-typography-panel);--line:var(--theme-typography-line);
+ --font-main:"Mukta Malar","Noto Sans Tamil","Nirmala UI","Latha","Tamil Sangam MN",system-ui,-apple-system,"Segoe UI",sans-serif;
+ --serif:var(--font-main);--sans:var(--font-main);--reading:var(--font-main);--ui:var(--font-main);
+ --weight-display:700;
+ --weight-page-title:600;
+ --weight-note-title:600;
+ --weight-section-heading:600;
+ --weight-item-title:500;
+ --weight-subtitle:400;
+ --weight-tagline:400;
+ --weight-body:400;
+ --weight-reading:400;
+ --weight-supporting:500;
+ --line-display:1.35;
+ --line-page-title:1.4;
+ --line-note-title:1.45;
+ --line-section-heading:1.5;
+ --line-item-title:1.5;
+ --line-subtitle:1.7;
+ --line-tagline:1.7;
+ --line-body:1.8;
+ --line-reading:1.9;
+ --line-supporting:1.5;
+ --type-display:clamp(2rem,7vw,2.49rem);
+ --type-page-title:2.07rem;
+ --type-note-title:1.73rem;
+ --type-section-heading:1.44rem;
+ --type-item-title:1.2rem;
+ --type-subtitle:1rem;
+ --type-tagline:1rem;
+ --type-body:1rem;
+ --type-reading:1.2rem;
+ --type-supporting:.83rem;
+}
+/* Welcome and Thanks */
+.display{font-family:var(--serif);font-size:var(--type-display);font-weight:var(--weight-display);line-height:var(--line-display);color:var(--accent)}
+.hello,.intro,.thanks>p,.thanks details p{font-size:var(--type-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+.contact,.thanks summary,.thanks details h3{font-size:var(--type-supporting);font-weight:var(--weight-supporting);line-height:var(--line-supporting)}
+/* Page titles, section headings and note titles */
+.page-title,.brand h2,.welcome h1.page-title{font-family:var(--serif);font-size:var(--type-page-title);font-weight:var(--weight-page-title);line-height:var(--line-page-title);color:var(--accent)}
+.note-title,main h1.note-title,.poem-heading h1.note-title{font-family:var(--serif);font-size:var(--type-note-title);font-weight:var(--weight-note-title);line-height:var(--line-note-title);color:var(--accent)}
+.section-heading,.poem h3,.thanks h2,.library h2{font-family:var(--serif);font-size:var(--type-section-heading);font-weight:var(--weight-section-heading);line-height:var(--line-section-heading);color:var(--accent)}
+/* Taglines, subtitles and body copy */
+.section-subtitle,.note-subtitle,.work-sub{font-weight:var(--weight-subtitle)}
+.tagline,.section-tagline{font-weight:var(--weight-tagline)}
+.tagline,.section-subtitle,.section-tagline,.note-subtitle,.work-sub{font-family:var(--sans);font-size:var(--type-subtitle);line-height:var(--line-subtitle);color:var(--muted);font-style:normal}
+ .tagline,.section-tagline{font-size:var(--type-tagline);line-height:var(--line-tagline)}
+.tagline{white-space:normal}
+.section-intro,.library>p{font-size:var(--type-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+/* Homepage and section item lists */
+.work-name,.poem-link-copy .work-name{font-family:var(--serif);font-size:var(--type-item-title);font-weight:var(--weight-item-title);line-height:var(--line-item-title);color:var(--text)}
+.work-sub{display:block}
+/* Single-page and anthology reading */
+.prose,.prose.note,.para,.verse{font-family:var(--reading,var(--serif));font-size:var(--type-reading);font-weight:var(--weight-reading);line-height:var(--line-reading)}
+.poem-heading h1{font-family:var(--reading,var(--serif));font-size:var(--type-note-title);font-weight:var(--weight-note-title);line-height:var(--line-note-title)}
+.eyebrow,.kicker,.poem-number,.count,.section-identity-back{font-size:var(--type-supporting);font-weight:var(--weight-supporting);line-height:var(--line-supporting)}
+
+:root{--theme-background:#faf9f6;--theme-panel:#f3efe7;--theme-text:#2b2a27;--theme-muted:#6b6257;--theme-accent:#654735;--theme-link:#7a5430;--theme-line:#e2d8c8;--theme-accent-soft:#efe5db;--theme-hover:#f0ede6;--theme-anth-background:#f5f3ee;--theme-anth-panel:#fffefa;--theme-anth-text:#242620;--theme-anth-muted:#66675e;--theme-anth-line:#dedbd2;--theme-anth-accent:#6b4935;--theme-anth-accent-soft:#efe5db;--theme-anth-hover:#f0ede6;--theme-anth-on-accent:#fff;--theme-typography-background:#f7f7f7;--theme-typography-panel:#f7f7f7;--theme-typography-line:#c9c9c9;--type-display:clamp(2rem, 7vw, 2.49rem);--weight-display:700;--line-display:1.35;--type-page-title:2.07rem;--weight-page-title:600;--line-page-title:1.4;--type-note-title:1.73rem;--weight-note-title:600;--line-note-title:1.45;--type-section-heading:1.44rem;--weight-section-heading:600;--line-section-heading:1.5;--type-item-title:1.2rem;--weight-item-title:500;--line-item-title:1.5;--type-subtitle:1rem;--weight-subtitle:400;--line-subtitle:1.7;--type-tagline:1rem;--weight-tagline:400;--line-tagline:1.7;--type-body:1rem;--weight-body:400;--line-body:1.8;--type-reading:1.2rem;--weight-reading:400;--line-reading:1.9;--type-supporting:.83rem;--weight-supporting:500;--line-supporting:normal}body{max-width:720px;margin-left:auto;margin-right:auto;padding:0 22px 56px}.library,.thanks{margin-top:clamp(44px,9vw,72px)}.thanks{border-radius:14px}</style><script>(function(){var root=document.documentElement;if(!document.fonts||typeof document.fonts.load!=='function'){console.error('Mukta Malar font loading is unavailable; page remains hidden.');return;}var weights=[200,300,400,500,600,700,800];Promise.all(weights.map(function(weight){return document.fonts.load(weight+' 16px "Mukta Malar"','தமிழ்').then(function(faces){if(!faces.length||faces.some(function(face){return face.status!=='loaded';})){throw new Error('Mukta Malar weight '+weight+' did not load.');}});})).then(function(){return document.fonts.ready;}).then(function(){root.classList.add('fonts-ready');}).catch(function(error){console.error('Mukta Malar font loading failed; page remains hidden.',error);});})();</script></head><body><header class="site-masthead"><a href="../../../index.html" aria-label="Home" title="Home"><span class="site-masthead-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7"/><path d="M5 9v12M19 9v12"/></svg></span><span lang="ta">எங்கெழுந் தருளுவ தினியே</span></a></header><header class="hero"><h1 class="page-title">In Watches</h1><div class="ornament" aria-hidden="true"><span></span></div></header><nav class="crumbs section-toolbar" aria-label="Section navigation"><a href="../01-About-Me-02-Finding-%E0%AE%83.html">← Finding ஃ</a></nav><main><section class="library"><ul><li><a href="./01-About-Me-02-Finding-%E0%AE%83-18-In-Watches-01-Titan.html"><span><span class="work-name">Titan</span></span><span class="arrow" aria-hidden="true">→</span></a></li><li><a href="./01-About-Me-02-Finding-%E0%AE%83-18-In-Watches-02-Skagen.html"><span><span class="work-name">Skagen</span></span><span class="arrow" aria-hidden="true">→</span></a></li></ul></section></main></body></html>

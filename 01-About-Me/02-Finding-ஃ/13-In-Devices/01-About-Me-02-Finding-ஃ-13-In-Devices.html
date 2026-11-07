@@ -1,0 +1,358 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><link rel="preload" href="../../../assets/fonts/MuktaMalar-ExtraLight.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Light.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-SemiBold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-Bold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../../../assets/fonts/MuktaMalar-ExtraBold.woff2" as="font" type="font/woff2" crossorigin><title>In Devices</title><style>html:not(.fonts-ready) body{visibility:hidden!important}html.fonts-ready body{visibility:visible}</style><style>@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:200;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-ExtraLight.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:300;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Light.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:400;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Regular.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:500;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Medium.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:600;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-SemiBold.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:700;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-Bold.woff2") format('woff2')}
+@font-face{font-family:'Mukta Malar';font-style:normal;font-weight:800;font-display:swap;src:url("../../../assets/fonts/MuktaMalar-ExtraBold.woff2") format('woff2')}
+
+:root {
+  color-scheme: light;
+  --bg:var(--theme-anth-background); --panel:var(--theme-anth-panel); --text:var(--theme-anth-text); --muted:var(--theme-anth-muted);
+  --line:var(--theme-anth-line); --accent:var(--theme-anth-accent); --accent-soft:var(--theme-accent-soft); --hover:var(--theme-hover); --on-accent:var(--theme-anth-on-accent);
+  --shadow:0 6px 24px var(--theme-anth-shadow);
+  --read-size:1.15rem; --sidebar:300px;
+  --ui:"Mukta Malar","Noto Sans Tamil","Nirmala UI","Latha","Tamil Sangam MN",system-ui,-apple-system,sans-serif;
+  --reading:"Mukta Malar","Noto Serif Tamil","Nirmala UI","Latha","Tamil Sangam MN","Noto Sans Tamil",serif;
+}
+* { box-sizing:border-box; }
+[hidden] { display:none!important; }
+html { scroll-padding-top:4.5rem; -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:var(--ui); line-height:1.6; }
+a { color:var(--accent); }
+:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+/* sidebar */
+.sidebar { position:fixed; inset:var(--masthead-height) auto 0 0; width:var(--sidebar); background:var(--panel); border-right:1px solid var(--line); display:flex; flex-direction:column; z-index:10; transition:transform .2s ease; }
+.brand { padding:1.15rem 1rem .9rem; border-bottom:1px solid var(--line); }
+.brand h2 { font-family:var(--reading); font-size:1.4rem; line-height:1.5; margin:0; }
+.brand p { margin:.25rem 0 0; color:var(--muted); font-size:.8rem; }
+.search-wrap { padding:.8rem; border-bottom:1px solid var(--line); }
+#search { width:100%; border:1px solid var(--line); border-radius:10px; padding:.7rem .8rem; font:inherit; font-size:.92rem; color:var(--text); background:var(--bg); }
+.count { padding:.65rem 1rem .35rem; color:var(--muted); font-size:.78rem; }
+.poem-list { flex:1; min-height:0; overflow:auto; padding:.2rem .55rem 1rem; overscroll-behavior:contain; }
+.poem-link { display:flex; align-items:baseline; gap:.7rem; padding:.55rem .65rem; border-radius:9px; text-decoration:none; color:var(--text); font-size:.92rem; line-height:1.5; }
+.poem-link:hover { background:var(--hover); }
+.poem-link.active { background:var(--accent-soft); color:var(--accent); font-weight:650; }
+.poem-number { width:1.8rem; flex:none; font-size:.75rem; color:var(--muted); font-variant-numeric:tabular-nums; }
+.poem-link.active .poem-number { color:inherit; }
+.no-results { display:none; padding:1rem; color:var(--muted); font-size:.9rem; }
+.backdrop { display:none; position:fixed; inset:var(--masthead-height) 0 0; background:rgba(0,0,0,.4); z-index:11; }
+
+/* main */
+.main { margin-left:var(--sidebar); min-width:0; transition:margin-left .2s ease; }
+body.collapsed .sidebar { transform:translateX(-100%); }
+body.collapsed .main { margin-left:0; }
+.topbar { position:sticky; top:0; z-index:15; display:flex; align-items:center; justify-content:center; gap:.5rem; min-height:var(--masthead-height); padding:.55rem clamp(1rem,4vw,3rem); background:var(--bg); border-bottom:1px solid var(--theme-line); }
+.anthology-menu-row { display:flex; align-items:center; padding:.5rem 1rem 0; }
+.poem-reading-controls { display:flex; justify-content:flex-end; margin:-.55rem 0 1.1rem; }
+.poem-reading-controls .reading-size-controls { display:flex; gap:.45rem; }
+.topbar-title { font-size:.88rem; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+.spacer { flex:1; }
+.icon-btn { min-width:2.4rem; height:2.4rem; border:1px solid var(--line); border-radius:9px; padding:0 .6rem; background:var(--panel); color:var(--text); font:inherit; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+.icon-btn:hover { background:var(--hover); }
+.home-btn { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+.home-btn svg { width:1.15rem; height:1.15rem; display:block; }
+.content { max-width:860px; margin:0 auto; padding:1.8rem clamp(1rem,4vw,3rem) 5rem; }
+
+/* cards */
+.welcome,.poem { background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); }
+.welcome { padding:clamp(1.5rem,4vw,3rem); }
+.kicker { color:var(--accent); font-size:.85rem; font-weight:700; }
+.welcome h1 { font-family:var(--reading); font-size:clamp(2.2rem,6vw,3.4rem); margin:.4rem 0 .8rem; line-height:1.35; }
+.welcome p { color:var(--muted); line-height:1.9; max-width:40rem; }
+.welcome .actions { display:flex; flex-wrap:wrap; gap:.7rem; margin:1.2rem 0 0; }
+.welcome .start,.welcome .resume { display:inline-block; padding:.7rem 1.1rem; border-radius:10px; text-decoration:none; font-weight:600; }
+.welcome .start { background:var(--accent); color:var(--on-accent); }
+.welcome .resume { border:1px solid var(--accent); color:var(--accent); }
+
+.poem { display:none; padding:clamp(1.2rem,4vw,2.6rem); }
+.poem:target { display:block; }
+.poem-heading { border-bottom:1px solid var(--line); padding-bottom:1.1rem; margin-bottom:1.6rem; }
+.eyebrow { color:var(--muted); font-size:.85rem; }
+.poem-heading h1 { font-family:var(--reading); margin:.3rem 0 0; font-size:clamp(1.6rem,4.5vw,2.4rem); line-height:1.5; }
+.poem h3 { font-family:var(--reading); font-size:1.2rem; line-height:1.6; color:var(--accent); margin:2.4rem 0 .6rem; }
+
+/* verse */
+.prose { font-family:var(--reading); font-size:var(--read-size); line-height:2.05; margin:0 0 1.5rem; overflow-wrap:anywhere; max-width:42rem; }
+.prose em { font-style:normal; font-weight:600; color:var(--accent); }
+.prose.note { font-family:var(--ui); font-size:.92rem; line-height:1.8; color:var(--muted); }
+.prose.closing { margin-top:2.4rem; text-align:center; color:var(--accent); font-weight:600; max-width:none; }
+.ln { margin-left:.7em; font-family:var(--ui); font-size:.7em; color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap; -webkit-user-select:none; user-select:none; }
+
+/* prev / next */
+.poem-nav { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin-top:2.5rem; padding-top:1.2rem; border-top:1px solid var(--line); }
+.navbtn { display:flex; flex-direction:column; gap:.15rem; padding:.7rem .95rem; border:1px solid var(--line); border-radius:10px; text-decoration:none; color:var(--text); line-height:1.5; }
+.navbtn small { color:var(--muted); font-size:.75rem; }
+.navbtn span { font-family:var(--reading); font-size:.95rem; }
+.navbtn:hover { background:var(--hover); }
+.navbtn.prev { grid-column:1; }
+.navbtn.next { grid-column:2; text-align:right; }
+
+body.showing-poem #welcome { display:none; }
+
+@media (max-width:760px) {
+  .sidebar { width:min(86vw,330px); transform:translateX(-100%); height:calc(100dvh - var(--masthead-height)); }
+  .main,body.collapsed .main { margin-left:0; }
+  body.menu-open .sidebar { transform:none; z-index:12; box-shadow:var(--shadow); }
+  body.menu-open .backdrop { display:block; }
+  :root { --read-size:1.05rem; }
+  .content { padding-top:1rem; }
+  .poem { border-radius:12px; }
+  .prose { line-height:1.95; }
+  .prose { max-width:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .sidebar,.main { transition:none; }
+}
+@media print {
+  .sidebar,.topbar,.anthology-menu-row,.poem-reading-controls,.poem-nav,.welcome,.backdrop { display:none!important; }
+  .main { margin:0; }
+  .content { max-width:none; padding:0; }
+  .poem { display:block!important; box-shadow:none; border:0; padding:0; break-before:page; }
+  body { background:var(--theme-anth-on-accent); color:#000; }
+  .prose { max-width:none; }
+}
+
+.poem .verse{font-family:var(--reading);font-size:var(--read-size);line-height:2.05;margin:0 0 1.5rem;overflow-wrap:anywhere;max-width:42rem}
+.poem .para{margin:0 0 1.1rem;overflow-wrap:anywhere;max-width:42rem}
+.poem em{font-style:normal;font-weight:600;color:var(--accent)}
+.poem h3,.poem h4,.poem h5,.poem h6{font-family:var(--reading);font-weight:600;line-height:1.6;color:var(--accent);margin:2.2rem 0 .6rem}
+.poem h4{font-size:1.1rem}.poem h5,.poem h6{font-size:1rem}
+.poem ul,.poem ol{margin:0 0 1.1rem;padding-left:1.5rem}.poem li{margin:.3rem 0}
+.poem blockquote{margin:22px 0;padding:2px 0 2px 16px;border-left:3px solid var(--line);color:var(--muted)}
+.poem code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background:var(--accent-soft);padding:.1em .35em;border-radius:5px}
+.poem pre{margin:0 0 1.2rem;padding:14px 16px;background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow-x:auto;line-height:1.6}
+.poem pre code{background:none;padding:0}
+.poem table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:0 0 1.2rem}
+.poem th,.poem td{border:1px solid var(--line);padding:.45rem .8rem;text-align:left}
+.poem th{background:var(--bg);font-weight:600}
+.poem img{max-width:100%;height:auto;border-radius:8px}
+.poem mark{background:var(--accent-soft);color:inherit;padding:0 .15em;border-radius:3px}
+.poem hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.callout{margin:24px 0 0;padding:14px 18px 16px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px}
+.callout-title{margin:0 0 4px;font-family:var(--reading);font-weight:600;font-size:1rem;color:var(--accent)}
+.callout p:not(.callout-title){margin:0}.callout>*+*{margin-top:8px}
+@media (max-width:760px){.poem .verse{line-height:1.95;max-width:none}.poem .para{max-width:none}}
+
+.ln{margin-left:.7em;font-family:var(--sans,var(--ui));font-size:.7em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;-webkit-user-select:none;user-select:none}
+
+:root {--theme-background:#faf9f6;--theme-panel:#f3efe7;--theme-text:#2b2a27;--theme-muted:#6b6257;--theme-accent:#654735;--theme-link:#7a5430;--theme-line:#e2d8c8;--theme-accent-soft:#efe5db;--theme-hover:#f0ede6;--theme-anth-background:#f5f3ee;--theme-anth-panel:#fffefa;--theme-anth-text:#242620;--theme-anth-muted:#66675e;--theme-anth-line:#dedbd2;--theme-anth-accent:#6b4935;--theme-anth-accent-soft:#efe5db;--theme-anth-hover:#f0ede6;--theme-anth-on-accent:#fff;--theme-anth-shadow:0 6px 24px rgba(32,26,20,.07);--theme-typography-background:#f7f7f7;--theme-typography-panel:#f7f7f7;--theme-typography-line:#c9c9c9;--masthead-height:3.5rem;}
+.topbar-site-title{position:static;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-width:0;max-width:calc(100% - 3rem);color:var(--accent);font-family:var(--reading);font-size:clamp(1rem,5.2vw,2.6rem);font-weight:600;line-height:1.5;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topbar-site-title:hover{color:var(--accent)}.topbar-site-title .site-masthead-icon{position:absolute;left:clamp(1rem,4vw,3rem);top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;flex:none}.topbar-site-title .site-masthead-icon svg{display:block;width:1.5rem;height:1.5rem}
+.section-subtitle{margin:0;color:var(--muted);font-size:.95rem}.section-tagline{margin:5px 0 0;color:var(--muted);font-style:normal;font-size:.9rem}
+.fig{margin:1.4rem 0;text-align:center}
+.fig img{display:block;margin:0 auto;max-width:100%;height:auto}
+figure.fig figcaption{margin-top:.5rem;font-size:.85rem;color:var(--muted)}
+.missing-img{color:var(--muted);font-style:italic;font-size:.9rem}
+
+/* ================= Approved Mukta Malar typography system ================= */
+:root{
+ --bg:var(--theme-typography-background);--panel:var(--theme-typography-panel);--line:var(--theme-typography-line);
+ --font-main:"Mukta Malar","Noto Sans Tamil","Nirmala UI","Latha","Tamil Sangam MN",system-ui,-apple-system,"Segoe UI",sans-serif;
+ --serif:var(--font-main);--sans:var(--font-main);--reading:var(--font-main);--ui:var(--font-main);
+ --weight-display:700;
+ --weight-page-title:600;
+ --weight-note-title:600;
+ --weight-section-heading:600;
+ --weight-item-title:500;
+ --weight-subtitle:400;
+ --weight-tagline:400;
+ --weight-body:400;
+ --weight-reading:400;
+ --weight-supporting:500;
+ --line-display:1.35;
+ --line-page-title:1.4;
+ --line-note-title:1.45;
+ --line-section-heading:1.5;
+ --line-item-title:1.5;
+ --line-subtitle:1.7;
+ --line-tagline:1.7;
+ --line-body:1.8;
+ --line-reading:1.9;
+ --line-supporting:1.5;
+ --type-display:clamp(2rem,7vw,2.49rem);
+ --type-page-title:2.07rem;
+ --type-note-title:1.73rem;
+ --type-section-heading:1.44rem;
+ --type-item-title:1.2rem;
+ --type-subtitle:1rem;
+ --type-tagline:1rem;
+ --type-body:1rem;
+ --type-reading:1.2rem;
+ --type-supporting:.83rem;
+}
+/* Welcome and Thanks */
+.display{font-family:var(--serif);font-size:var(--type-display);font-weight:var(--weight-display);line-height:var(--line-display);color:var(--accent)}
+.hello,.intro,.thanks>p,.thanks details p{font-size:var(--type-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+.contact,.thanks summary,.thanks details h3{font-size:var(--type-supporting);font-weight:var(--weight-supporting);line-height:var(--line-supporting)}
+/* Page titles, section headings and note titles */
+.page-title,.brand h2,.welcome h1.page-title{font-family:var(--serif);font-size:var(--type-page-title);font-weight:var(--weight-page-title);line-height:var(--line-page-title);color:var(--accent)}
+.note-title,main h1.note-title,.poem-heading h1.note-title{font-family:var(--serif);font-size:var(--type-note-title);font-weight:var(--weight-note-title);line-height:var(--line-note-title);color:var(--accent)}
+.section-heading,.poem h3,.thanks h2,.library h2{font-family:var(--serif);font-size:var(--type-section-heading);font-weight:var(--weight-section-heading);line-height:var(--line-section-heading);color:var(--accent)}
+/* Taglines, subtitles and body copy */
+.section-subtitle,.note-subtitle,.work-sub{font-weight:var(--weight-subtitle)}
+.tagline,.section-tagline{font-weight:var(--weight-tagline)}
+.tagline,.section-subtitle,.section-tagline,.note-subtitle,.work-sub{font-family:var(--sans);font-size:var(--type-subtitle);line-height:var(--line-subtitle);color:var(--muted);font-style:normal}
+ .tagline,.section-tagline{font-size:var(--type-tagline);line-height:var(--line-tagline)}
+.tagline{white-space:normal}
+.section-intro,.library>p{font-size:var(--type-body);font-weight:var(--weight-body);line-height:var(--line-body)}
+/* Homepage and section item lists */
+.work-name,.poem-link-copy .work-name{font-family:var(--serif);font-size:var(--type-item-title);font-weight:var(--weight-item-title);line-height:var(--line-item-title);color:var(--text)}
+.work-sub{display:block}
+/* Single-page and anthology reading */
+.prose,.prose.note,.para,.verse{font-family:var(--reading,var(--serif));font-size:var(--type-reading);font-weight:var(--weight-reading);line-height:var(--line-reading)}
+.poem-heading h1{font-family:var(--reading,var(--serif));font-size:var(--type-note-title);font-weight:var(--weight-note-title);line-height:var(--line-note-title)}
+.eyebrow,.kicker,.poem-number,.count,.section-identity-back{font-size:var(--type-supporting);font-weight:var(--weight-supporting);line-height:var(--line-supporting)}
+
+:root{--theme-background:#faf9f6;--theme-panel:#f3efe7;--theme-text:#2b2a27;--theme-muted:#6b6257;--theme-accent:#654735;--theme-link:#7a5430;--theme-line:#e2d8c8;--theme-accent-soft:#efe5db;--theme-hover:#f0ede6;--theme-anth-background:#f5f3ee;--theme-anth-panel:#fffefa;--theme-anth-text:#242620;--theme-anth-muted:#66675e;--theme-anth-line:#dedbd2;--theme-anth-accent:#6b4935;--theme-anth-accent-soft:#efe5db;--theme-anth-hover:#f0ede6;--theme-anth-on-accent:#fff;--theme-typography-background:#f7f7f7;--theme-typography-panel:#f7f7f7;--theme-typography-line:#c9c9c9;--type-display:clamp(2rem, 7vw, 2.49rem);--weight-display:700;--line-display:1.35;--type-page-title:2.07rem;--weight-page-title:600;--line-page-title:1.4;--type-note-title:1.73rem;--weight-note-title:600;--line-note-title:1.45;--type-section-heading:1.44rem;--weight-section-heading:600;--line-section-heading:1.5;--type-item-title:1.2rem;--weight-item-title:500;--line-item-title:1.5;--type-subtitle:1rem;--weight-subtitle:400;--line-subtitle:1.7;--type-tagline:1rem;--weight-tagline:400;--line-tagline:1.7;--type-body:1rem;--weight-body:400;--line-body:1.8;--type-reading:1.2rem;--weight-reading:400;--line-reading:1.9;--type-supporting:.83rem;--weight-supporting:500;--line-supporting:normal}.content{max-width:720px;margin-left:auto;margin-right:auto;padding:clamp(40px,9vw,88px) 22px 56px}</style><script>(function(){var root=document.documentElement;if(!document.fonts||typeof document.fonts.load!=='function'){console.error('Mukta Malar font loading is unavailable; page remains hidden.');return;}var weights=[200,300,400,500,600,700,800];Promise.all(weights.map(function(weight){return document.fonts.load(weight+' 16px "Mukta Malar"','தமிழ்').then(function(faces){if(!faces.length||faces.some(function(face){return face.status!=='loaded';})){throw new Error('Mukta Malar weight '+weight+' did not load.');}});})).then(function(){return document.fonts.ready;}).then(function(){root.classList.add('fonts-ready');}).catch(function(error){console.error('Mukta Malar font loading failed; page remains hidden.',error);});})();</script></head><body><div class="app"><aside class="sidebar" id="sidebar"><div class="brand"><h2 class="page-title">In Devices</h2><p>13 பாடல்கள்</p></div><div class="search-wrap"><input id="search" type="search" placeholder="பாடலைத் தேடுக / Search poems…" aria-label="பாடலைத் தேடுக / Search poems…" autocomplete="off"></div><div class="count" id="count" aria-live="polite">13 பாடல்கள்</div><nav class="poem-list" id="poem-list" aria-label="In Devices"><a class="poem-link" href="#n-1" data-search="1 Blackberry "><span class="poem-number">01</span><span class="poem-link-copy"><span class="work-name">Blackberry</span></span></a>
+    <a class="poem-link" href="#n-2" data-search="2 Dell 19inch Monitor "><span class="poem-number">02</span><span class="poem-link-copy"><span class="work-name">Dell 19inch Monitor</span></span></a>
+    <a class="poem-link" href="#n-3" data-search="3 iPod "><span class="poem-number">03</span><span class="poem-link-copy"><span class="work-name">iPod</span></span></a>
+    <a class="poem-link" href="#n-4" data-search="4 iPad "><span class="poem-number">04</span><span class="poem-link-copy"><span class="work-name">iPad</span></span></a>
+    <a class="poem-link" href="#n-5" data-search="5 iPhone "><span class="poem-number">05</span><span class="poem-link-copy"><span class="work-name">iPhone</span></span></a>
+    <a class="poem-link" href="#n-6" data-search="6 Lenovo Laptop x220 "><span class="poem-number">06</span><span class="poem-link-copy"><span class="work-name">Lenovo Laptop x220</span></span></a>
+    <a class="poem-link" href="#n-7" data-search="7 Motorola "><span class="poem-number">07</span><span class="poem-link-copy"><span class="work-name">Motorola</span></span></a>
+    <a class="poem-link" href="#n-8" data-search="8 Nokia "><span class="poem-number">08</span><span class="poem-link-copy"><span class="work-name">Nokia</span></span></a>
+    <a class="poem-link" href="#n-9" data-search="9 One plus bluetooth headset "><span class="poem-number">09</span><span class="poem-link-copy"><span class="work-name">One plus bluetooth headset</span></span></a>
+    <a class="poem-link" href="#n-10" data-search="10 Pixel 10a "><span class="poem-number">10</span><span class="poem-link-copy"><span class="work-name">Pixel 10a</span></span></a>
+    <a class="poem-link" href="#n-11" data-search="11 Poly "><span class="poem-number">11</span><span class="poem-link-copy"><span class="work-name">Poly</span></span></a>
+    <a class="poem-link" href="#n-12" data-search="12 Shure 215 iem "><span class="poem-number">12</span><span class="poem-link-copy"><span class="work-name">Shure 215 iem</span></span></a>
+    <a class="poem-link" href="#n-13" data-search="13 Sony 40inch TV "><span class="poem-number">13</span><span class="poem-link-copy"><span class="work-name">Sony 40inch TV</span></span></a><div class="no-results" id="no-results">பொருந்தும் பாடல் இல்லை.</div></nav></aside><div class="backdrop" id="backdrop"></div><main class="main"><header class="topbar"><a class="topbar-site-title" href="../../../index.html" aria-label="Home" title="Home"><span class="site-masthead-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7"/><path d="M5 9v12M19 9v12"/></svg></span><span lang="ta">எங்கெழுந் தருளுவ தினியே</span></a></header><div class="anthology-menu-row"><button class="icon-btn" id="menu-toggle" aria-label="பட்டியலைக் காட்டு / மறை" aria-controls="sidebar" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div><div class="content"><section class="welcome" id="welcome"><p class="crumbs anthology-crumbs"><a href="../01-About-Me-02-Finding-%E0%AE%83.html">← Finding ஃ</a></p><h1 class="page-title">In Devices</h1><p>13 பாடல்களும் ஒரே பக்கத்தில். இடப்பக்கப் பட்டியலில் பாடலைத் தேர்ந்தெடுக்கவும்; தேடல் பெட்டியில் பாடலின் பெயரையோ உரையில் உள்ள சொற்களையோ தேடலாம்.</p><p>இந்தப் பக்கம் ஒரே கோப்பாகச் சேமிக்கப்பட்டுள்ளது; படிக்க இணைய இணைப்பு தேவையில்லை.</p><div class="actions"><a class="start" href="#n-1">முதல் பாடலைத் திறக்க</a><a class="resume" id="resume" href="#n-1" hidden></a></div></section><article class="poem" id="n-1" data-num="1" data-title="Blackberry"><div class="poem-heading"><div class="eyebrow">பாடல் 1 / 13</div><h1 class="note-title">1. Blackberry</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><span></span><a class="navbtn next" rel="next" href="#n-2"><small>அடுத்த பாடல் →</small><span>2. Dell 19inch Monitor</span></a></nav></article>
+
+<article class="poem" id="n-2" data-num="2" data-title="Dell 19inch Monitor"><div class="poem-heading"><div class="eyebrow">பாடல் 2 / 13</div><h1 class="note-title">2. Dell 19inch Monitor</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-1"><small>← முந்தைய பாடல்</small><span>1. Blackberry</span></a><a class="navbtn next" rel="next" href="#n-3"><small>அடுத்த பாடல் →</small><span>3. iPod</span></a></nav></article>
+
+<article class="poem" id="n-3" data-num="3" data-title="iPod"><div class="poem-heading"><div class="eyebrow">பாடல் 3 / 13</div><h1 class="note-title">3. iPod</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><p class="para">iPod Nano 5th gen</p><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-2"><small>← முந்தைய பாடல்</small><span>2. Dell 19inch Monitor</span></a><a class="navbtn next" rel="next" href="#n-4"><small>அடுத்த பாடல் →</small><span>4. iPad</span></a></nav></article>
+
+<article class="poem" id="n-4" data-num="4" data-title="iPad"><div class="poem-heading"><div class="eyebrow">பாடல் 4 / 13</div><h1 class="note-title">4. iPad</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-3"><small>← முந்தைய பாடல்</small><span>3. iPod</span></a><a class="navbtn next" rel="next" href="#n-5"><small>அடுத்த பாடல் →</small><span>5. iPhone</span></a></nav></article>
+
+<article class="poem" id="n-5" data-num="5" data-title="iPhone"><div class="poem-heading"><div class="eyebrow">பாடல் 5 / 13</div><h1 class="note-title">5. iPhone</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><p class="para">iPhone 5s<br>iPhone 11 Pro<br>iPhone e</p><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-4"><small>← முந்தைய பாடல்</small><span>4. iPad</span></a><a class="navbtn next" rel="next" href="#n-6"><small>அடுத்த பாடல் →</small><span>6. Lenovo Laptop x220</span></a></nav></article>
+
+<article class="poem" id="n-6" data-num="6" data-title="Lenovo Laptop x220"><div class="poem-heading"><div class="eyebrow">பாடல் 6 / 13</div><h1 class="note-title">6. Lenovo Laptop x220</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><p class="para">7 row keypad<br>2mm key travel</p><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-5"><small>← முந்தைய பாடல்</small><span>5. iPhone</span></a><a class="navbtn next" rel="next" href="#n-7"><small>அடுத்த பாடல் →</small><span>7. Motorola</span></a></nav></article>
+
+<article class="poem" id="n-7" data-num="7" data-title="Motorola"><div class="poem-heading"><div class="eyebrow">பாடல் 7 / 13</div><h1 class="note-title">7. Motorola</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-6"><small>← முந்தைய பாடல்</small><span>6. Lenovo Laptop x220</span></a><a class="navbtn next" rel="next" href="#n-8"><small>அடுத்த பாடல் →</small><span>8. Nokia</span></a></nav></article>
+
+<article class="poem" id="n-8" data-num="8" data-title="Nokia"><div class="poem-heading"><div class="eyebrow">பாடல் 8 / 13</div><h1 class="note-title">8. Nokia</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-7"><small>← முந்தைய பாடல்</small><span>7. Motorola</span></a><a class="navbtn next" rel="next" href="#n-9"><small>அடுத்த பாடல் →</small><span>9. One plus bluetooth headset</span></a></nav></article>
+
+<article class="poem" id="n-9" data-num="9" data-title="One plus bluetooth headset"><div class="poem-heading"><div class="eyebrow">பாடல் 9 / 13</div><h1 class="note-title">9. One plus bluetooth headset</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-8"><small>← முந்தைய பாடல்</small><span>8. Nokia</span></a><a class="navbtn next" rel="next" href="#n-10"><small>அடுத்த பாடல் →</small><span>10. Pixel 10a</span></a></nav></article>
+
+<article class="poem" id="n-10" data-num="10" data-title="Pixel 10a"><div class="poem-heading"><div class="eyebrow">பாடல் 10 / 13</div><h1 class="note-title">10. Pixel 10a</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-9"><small>← முந்தைய பாடல்</small><span>9. One plus bluetooth headset</span></a><a class="navbtn next" rel="next" href="#n-11"><small>அடுத்த பாடல் →</small><span>11. Poly</span></a></nav></article>
+
+<article class="poem" id="n-11" data-num="11" data-title="Poly"><div class="poem-heading"><div class="eyebrow">பாடல் 11 / 13</div><h1 class="note-title">11. Poly</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><p class="para">Plantronics Voyager Legend<br>Poly Savi<br>All Poly products<br>Acoustic Fencing</p><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-10"><small>← முந்தைய பாடல்</small><span>10. Pixel 10a</span></a><a class="navbtn next" rel="next" href="#n-12"><small>அடுத்த பாடல் →</small><span>12. Shure 215 iem</span></a></nav></article>
+
+<article class="poem" id="n-12" data-num="12" data-title="Shure 215 iem"><div class="poem-heading"><div class="eyebrow">பாடல் 12 / 13</div><h1 class="note-title">12. Shure 215 iem</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-11"><small>← முந்தைய பாடல்</small><span>11. Poly</span></a><a class="navbtn next" rel="next" href="#n-13"><small>அடுத்த பாடல் →</small><span>13. Sony 40inch TV</span></a></nav></article>
+
+<article class="poem" id="n-13" data-num="13" data-title="Sony 40inch TV"><div class="poem-heading"><div class="eyebrow">பாடல் 13 / 13</div><h1 class="note-title">13. Sony 40inch TV</h1></div><div class="poem-reading-controls"><div class="reading-size-controls" role="group" aria-label="Text size controls"><button class="icon-btn size-down" aria-label="Decrease text size">அ−</button><button class="icon-btn size-up" aria-label="Increase text size">அ+</button></div></div><nav class="poem-nav" aria-label="In Devices"><a class="navbtn prev" rel="prev" href="#n-12"><small>← முந்தைய பாடல்</small><span>12. Shure 215 iem</span></a></nav></article></div></main></div><script>(function () {
+  var CFG = {"name":"In Devices","key":"01-About-Me/02-Finding-ஃ/13-In-Devices/01-About-Me-02-Finding-ஃ-13-In-Devices","count":"பாடல்கள்","cont":"தொடர்ந்து படிக்க:"};
+  var $ = function (id) { return document.getElementById(id); };
+  var body = document.body, root = document.documentElement;
+  var search = $('search'), count = $('count'), noResults = $('no-results');
+  var sidebar = $('sidebar'), backdrop = $('backdrop'), toggle = $('menu-toggle');
+  var resume = $('resume');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.poem-link:not(.section-link)'));
+  var poems = Array.prototype.slice.call(document.querySelectorAll('.poem'));
+  var mobile = window.matchMedia('(max-width:760px)');
+  var TOTAL = poems.length, BASE_TITLE = document.title, LAST = 'tv-last-' + CFG.key;
+  var byId = {}; poems.forEach(function (p) { byId[p.id] = p; });
+  var current = null, index = null;
+
+  function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function norm(s) { return s.normalize('NFC').toLocaleLowerCase(); }
+
+  function isOpen() { return mobile.matches ? body.classList.contains('menu-open') : !body.classList.contains('collapsed'); }
+  function sync() { var o = isOpen(); sidebar.inert = !o; toggle.setAttribute('aria-expanded', String(o)); }
+  function setMenu(open) {
+    if (mobile.matches) body.classList.toggle('menu-open', open);
+    else body.classList.toggle('collapsed', !open);
+    sync();
+  }
+  toggle.addEventListener('click', function () { setMenu(!isOpen()); });
+  backdrop.addEventListener('click', function () { setMenu(false); });
+  mobile.addEventListener('change', function () { body.classList.remove('menu-open'); sync(); });
+
+  function updateActive() {
+    var p = byId[location.hash.slice(1)] || null;
+    body.classList.toggle('showing-poem', !!p);
+    links.forEach(function (a) {
+      var on = !!p && a.getAttribute('href') === '#' + p.id;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    if (p) {
+      document.title = p.dataset.title + ' — ' + CFG.name;
+      save(LAST, p.id);
+      if (p !== current) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        var a = document.querySelector('.poem-link.active');
+        if (a) a.scrollIntoView({ block: 'nearest' });
+      }
+      if (mobile.matches) setMenu(false);
+    } else {
+      document.title = BASE_TITLE;
+    }
+    current = p;
+  }
+  window.addEventListener('hashchange', updateActive);
+
+  function buildIndex() {
+    index = poems.map(function (p) {
+      var c = p.cloneNode(true), nav = c.querySelector('.poem-nav');
+      if (nav) nav.remove();
+      Array.prototype.forEach.call(c.querySelectorAll('.ln'), function (n) { n.remove(); });
+      return norm(c.textContent.replace(/\s+/g, ' '));
+    });
+  }
+  function runSearch() {
+    var q = norm(search.value.trim()).replace(/\s+/g, ' ');
+    var numeric = /^\d+$/.test(q);
+    if (q && !numeric && !index) buildIndex();
+    var shown = 0;
+    links.forEach(function (a, i) {
+      var key = norm(a.dataset.search || ''), match = !q;
+      if (q) {
+        if (numeric) match = key.split(' ')[0] === q;
+        else match = key.indexOf(q) > -1 || index[i].indexOf(q) > -1;
+      }
+      a.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    count.textContent = q ? shown + ' / ' + TOTAL + ' ' + CFG.count : TOTAL + ' ' + CFG.count;
+    noResults.style.display = shown ? 'none' : 'block';
+  }
+  var timer;
+  search.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(runSearch, 120); });
+  search.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') return;
+    clearTimeout(timer); runSearch();
+    var first = links.filter(function (a) { return a.style.display !== 'none'; })[0];
+    if (first) location.hash = first.getAttribute('href');
+  });
+
+  var size = parseFloat(load('tv-size')) || parseFloat(getComputedStyle(root).getPropertyValue('--read-size')) || 1.15;
+  function setSize(v) {
+    size = Math.min(1.8, Math.max(0.95, Math.round(v * 100) / 100));
+    root.style.setProperty('--read-size', size + 'rem');
+    save('tv-size', size);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.size-down'), function (button) { button.addEventListener('click', function () { setSize(size - 0.1); }); });
+  Array.prototype.forEach.call(document.querySelectorAll('.size-up'), function (button) { button.addEventListener('click', function () { setSize(size + 0.1); }); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobile.matches && body.classList.contains('menu-open')) { setMenu(false); return; }
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === '/') { e.preventDefault(); setMenu(true); search.focus(); return; }
+    if (!current) return;
+    var sel = e.key === 'ArrowLeft' ? '.navbtn.prev' : e.key === 'ArrowRight' ? '.navbtn.next' : null;
+    var a = sel && current.querySelector(sel);
+    if (a) location.hash = a.getAttribute('href');
+  });
+
+  var last = load(LAST);
+  if (last && byId[last] && resume) {
+    resume.href = '#' + last;
+    resume.textContent = CFG.cont + ' ' + byId[last].dataset.num + '. ' + byId[last].dataset.title;
+    resume.hidden = false;
+  }
+  sync();
+  updateActive();
+})();
+</script></body></html>
